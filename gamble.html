@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+
+
+
+<h1>MELLY.COM</h1>
+<a href="index.html">Home</a>
+<a href="QUOTE SHRINE 2.html">Quotes</a>
+<a href="Fanart.html">Fanart Place</a>
+<a href="Peanut.html">SAVE PEANUT</a>
+<a href="gamble.html">Gamblecore</a>
+<h1>GAMBLING!!</h1>
+<h2>Winner gets a melly signed index card so you can forge their signatures!</h2>
+<div class="bet-category" data-key="marriage" data-title="How long until they get married?">
+  <h3>How long until they get married but genuinely?</h3>
+  <input type="number" class="bet-input" placeholder="TAKE YOUR BETS" min="1">
+  <button class="submit-btn">Submit!</button>
+  <div class="msg"></div>
+</div>
+
+<div class="bet-category" data-key="pets" data-title="How many pet rats will they own?">
+  <h3>How many pet rats will they own?</h3>
+  <input type="number" class="bet-input" placeholder="TAKE YOUR BETS" min="1">
+  <button class="submit-btn">Submit!</button>
+  <div class="msg"></div>
+</div>
+
+<div class="bet-category" data-key="rail" data-title="How long until they rail?">
+  <h3>How long until they rail?</h3>
+  <input type="number" class="bet-input" placeholder="TAKE YOUR BETS" min="1">
+  <button class="submit-btn">Submit!</button>
+  <div class="msg"></div>
+</div>
+
+<div class="bet-category" data-key="breakup" data-title="How long until they break up?">
+  <h3>How long until they break up?</h3>
+  <input type="number" class="bet-input" placeholder="TAKE YOUR BETS" min="1">
+  <button class="submit-btn">Submit!</button>
+  <div class="msg"></div>
+</div>
+
+<div class="bet-category" data-key="crime" data-title="How long until they commit a crime together?">
+  <h3>How long until they commit a crime together?</h3>
+  <input type="number" class="bet-input" placeholder="TAKE YOUR BETS" min="1">
+  <button class="submit-btn">Submit!</button>
+  <div class="msg"></div>
+</div>
+
+<div class="bet-category" data-key="kiss" data-title="How long until they kiss in public?">
+  <h3>How long until they kiss in public?</h3>
+  <input type="number" class="bet-input" placeholder="TAKE YOUR BETS" min="1">
+  <button class="submit-btn">Submit!</button>
+  <div class="msg"></div>
+</div>
+
+<div class="bet-category" data-key="keenan" data-title="How long until they tell keenan?">
+  <h3>How long until they tell keenan?</h3>
+  <input type="number" class="bet-input" placeholder="TAKE YOUR BETS" min="1">
+  <button class="submit-btn">Submit!</button>
+  <div class="msg"></div>
+</div>
+
+<div class="bet-category" data-key="attorney" data-title="How long until they finally play ace attorney?">
+  <h3>How long until they finally play ace attorney?</h3>
+  <input type="number" class="bet-input" placeholder="TAKE YOUR BETS" min="1">
+  <button class="submit-btn">Submit!</button>
+  <div class="msg"></div>
+</div>
+
+<div class="bet-category" data-key="secret" data-title="How long until they discover elliots dark secret?">
+  <h3>How long until they discover elliots dark secret?</h3>
+  <input type="number" class="bet-input" placeholder="TAKE YOUR BETS" min="1">
+  <button class="submit-btn">Submit!</button>
+  <div class="msg"></div>
+</div>
+
+<div class="bet-category" data-key="bar" data-title="How long until they go to a bar together?">
+  <h3>How long until they go to a bar together?</h3>
+  <input type="number" class="bet-input" placeholder="TAKE YOUR BETS" min="1">
+  <button class="submit-btn">Submit!</button>
+  <div class="msg"></div>
+</div>
+<script>
+const MAX_SUBMITS = 3;
+
+document.querySelectorAll(".bet-category").forEach(cat => {
+  const key = cat.dataset.key + "_count";
+  let count = Number(localStorage.getItem(key)) || 0;
+
+  const btn = cat.querySelector(".submit-btn");
+  const input = cat.querySelector(".bet-input");
+  const msg = cat.querySelector(".msg");
+
+  if (count >= MAX_SUBMITS) {
+    btn.disabled = true;
+    msg.textContent = "You bet enough already. No more bets for you. Go home and think about what you've done.";
+  }
+
+  btn.onclick = () => {
+    const value = input.value;
+    if (!value || value <= 0) {
+      msg.textContent = "Enter your best guess.";
+      return;
+    }
+
+    count++;
+    localStorage.setItem(key, count);
+
+    msg.textContent = "Placing bet...";
+    btn.disabled = true;
+
+    setTimeout(() => {
+      msg.textContent = `You guessed ${value}. Very cool.`;
+      if (count < MAX_SUBMITS) btn.disabled = false;
+      else msg.textContent += " (No more bets left)";
+    }, 1200);
+  };
+});
+</script>
