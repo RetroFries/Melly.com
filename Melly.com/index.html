@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>MELLY.COM</h1>
+
+<p>Welcome to Melly.com, your go-to destination for all things Melly!</p>
+<p>This was a bad idea.</p>
+
+<h2>What Is Melly?</h2>
+<p>Melly is the ship name for Elliot x Maddie. Those two goofballs are the couple ever and now we are gonna rub it in their faces!</p>
+
+<h2>Why the hell did you make this website?</h2>
+<p>Because I'm a terrible person. And it was kinda funny</p>
+
+<h2>Who is maddie and elliot?</h2>
+<p>these guys.</p>
+
+<img src="IMG_1154 (1).jpeg" alt="Elliot" width="200" height="300">
+<img src="IMG_5982.jpeg" alt="Maddie" width="200" height="300">
+
+<h2>How many days until they get married.</h2>
+<h1 id="counter">load...</h1>
+
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    const targetDate = new Date("2033-01-18");
+
+    function updateCounter() {
+      const now = new Date();
+      const diffMs = targetDate - now;
+
+      if (diffMs <= 0) {
+        document.getElementById("counter").textContent =
+          "CONGRATS THEYRE MARRIED!";
+        return;
+      }
+
+      const totalSeconds = Math.floor(diffMs / 1000);
+      const totalMinutes = Math.floor(totalSeconds / 60);
+      const totalHours = Math.floor(totalMinutes / 60);
+      const totalDays = Math.floor(totalHours / 24);
+
+      document.getElementById("counter").innerHTML = `
+        only ${totalDays} days remaining<br>
+        that's ${totalHours} hours<br>
+        ${totalMinutes} minutes<br>
+        and ${totalSeconds} seconds
+      `;
+    }
+
+    updateCounter();              // run immediately
+    setInterval(updateCounter, 1000); // update every second
+  });
+</script>
+
+<p>better start counting</p>
+
+<h2>So can we have some fanart?</h2>
+<p>i mean sure.</p>
+<img src="IMG_3219.jpg" alt="Melly" width="400" height="200">
+<p>BASED ON A TRUE STORY!!!</p>
+<h3>wait a minute... this was drawn by maddie herself, so doesnt that make it OFFICIAL art?</h3>
+<p>OH MY FRICKING GOD I FOUND A LOOPHOLE PRAISE ME</p>
+
+<h2>Can we have more fanart?</h2>
+<p>You greedy little collectors. No. We dont care about the fandom</p>
+
+<h1>But wait, theres more!</h1>
+<h2>You can guess how they will tragically break up right here! Place your bets!</h2>
+
+
+<form id="fakeForm">
+  <input type="text" id="message" placeholder="YOUR BET HERE" required>
+  <br><br>
+  <button type="submit">Submit</button>
+</form>
+
+<p id="status"></p>
+
+<script>
+  const form = document.getElementById("fakeForm");
+  const status = document.getElementById("status");
+  const messageInput = document.getElementById("message");
+
+  const savedMessage = localStorage.getItem("submittedMessage") || "i forgor 💔";
+
+  if (localStorage.getItem("alreadySubmitted")) {
+    form.style.display = "none";
+    status.innerHTML = `
+      you already submitted. dumbass.<br>
+      <small>Your submission:</small><br>
+      "<em>${savedMessage}</em>"
+    `;
+  }
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const msg = messageInput.value || "i forgor 💔";
+
+    localStorage.setItem("alreadySubmitted", "true");
+    localStorage.setItem("submittedMessage", msg);
+
+    form.style.display = "none";
+    status.textContent = "Emailing to them rn...";
+
+    setTimeout(() => {
+      status.innerHTML = `
+        Emailing to them rn... Done!<br>
+        <small>Your submission:</small><br>
+        "<em>${msg}</em>"
+      `;
+    }, 2000);
+  });
+</script>
+<p>The coding AI just wrote "My money is on maddie leaving elliot for a hotter guy". Wtf.</p>
+<h2>INSANE MADDIE QUOTES ON YOUR LOCAL LINE</h2>
+<ul>
+  <li>"Im gonna flash you"</li>
+  <li>"I gave elliot a bj"</li>
+  <li>"Im gonna rail that old woman SO HARD she wont be able to walk again"</li>
+  <li>"he was gonna bust on me"</li>
+  <li>"I stil feel weird things when i look at you in a fursuit"</li>
+  <li>"I was gonna get a body pillow with elliot on it"</li>
+  <li>"OK IM GONNA GO MAKE OUT WITH OUR FAVORITE FEMBOY"</li>
+  <li>"I fucked eddy (eddy is a cat)"</li>
+  <li>"First it was buff elliot."</li>
+  <li>"hm. elliot im going to pin you to a wall (elliot: pls do)"</li>
+  <li>"IM PULLING OUTTTT"</li>
+</ul>
+
+
+<h2>PEANUT IS GONNA DIE SOON</h2>
+<p>please.</p>
+<p>SAVE PEANUT!!!!!!1!</p> 
+
+
+<a href="https://www.gofundme.com/f/save-peanut-surgery-for-a-beloved-support-cat" target="_blank">
+  <button>please save peanut here</button>
+</a>
+
+
+</body>
+</html>
